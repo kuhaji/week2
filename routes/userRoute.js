@@ -12,9 +12,7 @@ router.get('./routes/userRoutes.js', userController.user_get,(req,res) => {
     res.send(req.params.id)
 });
 
-router.post('/', (req, res) => {
-    res.send('With this endpoint you can add users');
-});
+router.post('/', userController.user_get);
 
 router.put('/', (req, res) => {
     res.send('With this endpoint you can edit users');
