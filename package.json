@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "multer": "^1.4.2",
@@ -18,5 +19,8 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
+=======
+    "express": "^4.17.1"
+>>>>>>> 6addb6c69b4bcb992c14145ba9b48794e3f56e06
   }
 }

@@ -44,14 +44,23 @@ if (!Array.prototype.reduce) {
       }
 
       // 1. Let O be ? ToObject(this value).
+
       const o = Object(this);
 
       // 2. Let len be ? ToLength(? Get(O, "length")).
       const len = o.length >>> 0;
 
       // Steps 3, 4, 5, 6, 7
-      var k = 0;
-      var value;
+
+      const o = Object(this);
+
+      // 2. Let len be ? ToLength(? Get(O, "length")).
+      const len = o.length >>> 0;
+
+      // Steps 3, 4, 5, 6, 7
+
+      const k = 0;
+      const value;
 
       if (arguments.length >= 2) {
         value = arguments[1];
@@ -82,7 +91,11 @@ if (!Array.prototype.reduce) {
           value = callback(value, o[k], k, o);
         }
 
+
         // d. Increase k by 1.
+
+        // d. Increase k by 1.
+
         k++;
       }
 
@@ -94,10 +107,14 @@ if (!Array.prototype.reduce) {
 
 // main function
 function serializeJson (form, protected = false) {
-  var data = {}, form_arr = [];
+  const data = {}, form_arr = [];
   // export to array
   if(typeof HTMLFormElement === "function" && form instanceof HTMLFormElement) {
+
     for(const i in form.elements) {
+
+    for(const i in form.elements) {
+
       if(form.elements[i] instanceof HTMLInputElement ||
           form.elements[i] instanceof HTMLSelectElement ||
           form.elements[i] instanceof HTMLTextAreaElement)
@@ -110,20 +127,20 @@ function serializeJson (form, protected = false) {
 
   // serialize to json
   data = form_arr.reduce(function (r, o) {
-    var s = r, arr = o.name.split('.');
+    const s = r, arr = o.name.split('.');
     arr.forEach((n, k) => {
-      var ck = n.replace(/\[[0-9]*\]$/, "");
+      const ck = n.replace(/\[[0-9]*\]$/, "");
       if (!s.hasOwnProperty(ck))
         s[ck] = (new RegExp("\[[0-9]*\]$").test(n)) ? [] : {};
       if (s[ck] instanceof Array) {
-        var i = parseInt((n.match(new RegExp("([0-9]+)\]$")) || []).pop(), 10);
+        const i = parseInt((n.match(new RegExp("([0-9]+)\]$")) || []).pop(), 10);
         i = isNaN(i) ? s[ck].length : i;
         s[ck][i] = s[ck][i] || {};
         if(k === arr.length - 1) {
           if(protected && JSON.stringify({}) !== JSON.stringify(s[ck][i])) {
 
             while(s[ck][i] !== undefined) {
-              var tmp = s[ck][i];
+              const tmp = s[ck][i];
               s[ck][i] = o.value;
               o.value = tmp;
               i++;
